@@ -23,22 +23,21 @@ h1 {
   font-size: 8rem;
   letter-spacing: 0.1rem;
   font-style: italic;
-  color: #40b48e;
-  text-shadow: 0 0.2rem 5rem rgb(119, 115, 115);
-  text-transform: uppercase;
-  margin: 4rem 0;
+  color: salmon;
+  text-shadow: 0 0.2rem 5rem rgb(11, 199, 74);
+  margin: 3rem 0;
 }
 
 .search-form {
-  width: 60rem;
-  height: 10rem;
+  width: 70rem;
+  height: 12rem;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #d3d3d3;
-  border-radius: 0.5rem;
+  background-color: slategrey;
+  border-radius: 1rem;
   margin-bottom: 5rem;
-  box-shadow: 1rem 2rem 5rem #aaa;
+  box-shadow: 1rem 2rem 5rem rgb(240, 184, 184);
   position: relative;
 }
 
@@ -46,7 +45,7 @@ h1 {
   position: absolute;
   top: -3rem;
   left: 0;
-  background-color: rgb(233, 72, 72);
+  background-color: rgb(240, 184, 184);
   width: calc(100% - 0.4rem);
   border-radius: 0.5rem;
   padding: 0.2rem;
@@ -54,8 +53,8 @@ h1 {
 
 .alert h3 {
   font-size: 1.8rem;
-  color: #fff;
-  font-weight: 400;
+  color: red;
+  font-weight: 700;
   text-transform: uppercase;
   text-align: center;
 }
@@ -78,7 +77,7 @@ h1 {
 .search-form input[type="submit"] {
   width: 25%;
   text-transform: uppercase;
-  background-color: #40b48e;
+  background-color: salmon;
   color: #fff;
 }
 
@@ -96,15 +95,15 @@ h1 {
   margin: 3rem;
   display: flex;
   flex-direction: column;
-  background-color: #d3d3d3;
+  background-color: rgb(226, 199, 196);
   padding: 2rem;
   position: relative;
   border-radius: 0.5rem;
-  box-shadow: 2rem 3rem 5rem #aaa;
+  box-shadow: 2rem 3rem 5rem rgb(143, 82, 82);
 }
 
 .recipe h2 {
-  background-color: rgba(161, 161, 161, 0.7);
+  background-color: rgba(226, 116, 116, 0.7);
   border-radius: 0.5rem;
   padding: 0.3rem 0.5rem;
   position: absolute;
