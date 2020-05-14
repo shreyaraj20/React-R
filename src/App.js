@@ -1,26 +1,63 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import "./styles.css";
-import Form from "./components/Form";
-// const url="https://api.edamam.com/search?q=chicken&app_id=${YOUR_APP_ID}&app_key=${YOUR_APP_KEY}&from=0&to=3&calories=591-722&health=alcohol-free"
+import Axios from "axios";
+import { v4 as uuidv4 } from "uuid";
+import Recipe from "./components/Recipe";
+import Alert from "./components/Alert";
 
-const API_KEY = "4d827db02a22de97e0e9144e741381ce";
+function App() {
+  const [query, setQuery] = useState("");
+  const [recipes, setRecipes] = useState([]);
+  const [alert, setAlert] = useState("");
 
-class App extends Component {
-  getRecipe = e => {
-    const recipeName = e.target.elements.recipeName.value;
-    e.preventDefault();
-    console.log(recipeName);
+  const APP_ID = "4e9f05eb";
+  const APP_KEY = "9b904d703fa0d46a88ce1ac63f29f498";
+
+  const url = `https://api.edamam.com/search?q=${query}&app_id=${APP_ID}&app_key=${APP_KEY}`;
+
+  const getData = async () => {
+    if (query !== "") {
+      const result = await Axios.get(url);
+      if (!result.data.more) {
+        return setAlert("No food with such name");
+      }
+      console.log(result);
+      setRecipes(result.data.hits);
+      setQuery("");
+      setAlert("");
+    } else {
+      setAlert("Please fill the form");
+    }
   };
 
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <h1 className="App-title">Search Recipe</h1>
-        </header>
-        <Form getRecipe={this.getRecipe} />
+  const onChange = e => setQuery(e.target.value);
+
+  const onSubmit = e => {
+    e.preventDefault();
+    getData();
+  };
+
+  return (
+    <div className="App">
+      <h1>Food Searching App</h1>
+      <form onSubmit={onSubmit} className="search-form">
+        {alert !== "" && <Alert alert={alert} />}
+        <input
+          type="text"
+          name="query"
+          onChange={onChange}
+          value={query}
+          autoComplete="off"
+          placeholder="Search Food"
+        />
+        <input type="submit" value="Search" />
+      </form>
+      <div className="recipes">
+        {recipes !== [] &&
+          recipes.map(recipe => <Recipe key={uuidv4()} recipe={recipe} />)}
       </div>
-    );
-  }
+    </div>
+  );
 }
+
 export default App;
