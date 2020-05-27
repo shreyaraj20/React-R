@@ -42,6 +42,7 @@ function App() {
       <h1>Search Recipe</h1>
       <form onSubmit={onSubmit} className="search-form">
         {alert !== "" && <Alert alert={alert} />}
+
         <input
           type="text"
           name="query"
